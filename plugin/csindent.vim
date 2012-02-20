@@ -166,7 +166,9 @@ function SelectCodingStyleIndent()
     endif
 
     setl noai nocin nosi inde=
-    unlet b:did_indent
+    if exists("b:did_indent")
+        unlet b:did_indent
+    endif
     source `=l:path`
     if exists("b:undo_indent")
         let b:undo_indent .= " ai< cin< si< inde<"
